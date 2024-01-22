@@ -106,24 +106,41 @@ const shapes =[
        // push to the left
 
     function moveLeft(){
-        
-
-
+        if(!area(peiceObj.x-1,peiceObj.y))
+        peiceObj.x-=1;
+    renderGrid();   
     }
         
      // push to the right
 
     function moveRight(){
-    
-
+        if(!area(peiceObj.x+1,peiceObj.y))
+        peiceObj.x+=1;
+        renderGrid();
     }
 
     // rotate the shape
 
     function moveUp(){
-        
-
-
+        let reverse=[];
+        let peice=peiceObj.peice;
+        for(let i=0;i<peice.length;i++){
+            reverse.push([]);
+            for(let j=0;j<peice[i].length;j++){
+                reverse[i].push(0);
+            }
+        }
+        for(let i=0;i<peice.length;i++){
+            for(let j=0;j<peice[i].length;j++){
+                reverse[i][j]=peice[j][i];
+            }
+        }
+        for(let i=0;i<reverse.length;i++){
+            reverse[i]=reverse[i].reverse();
+        }
+        if(!area(peiceObj.x,peiceObj.y,reverse))
+           peiceObj.peice=reverse;
+        renderGrid();
     }
     
     
