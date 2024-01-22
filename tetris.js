@@ -106,14 +106,50 @@ const shapes =[
     // to check weather the boxes hit the border of canva
     
     function area(x,y,reverse){
+            let peice=peiceObj.peice || reverse;
+            for(let i=0;i<peice.length;i++){
+               for( let j=0;j<peice[i].length;j++){
+                if(peice[i][j]==1){
+                    let p= x+j;
+                    let q=y+i;
+                    if(p>=0 && p<col && q>=0 && q<row){
+                       if(grid[q][p]>0){
+                         return true;
+                        }
+                    }else{
+                        return true;
+                    }
+                }
+               }
+            }
+            return false;
+        }
         
-
-
-    }
     
     //move the boxes
     
     function moveDown(){
+        if(!area(peiceObj.x,peiceObj.y+1)){
+            peiceObj.y+=1;
+            }else{
+                for(let i=0;i<peiceObj.peice.length;i++){
+                    for( let j=0;j<peiceObj.peice[i].length;j++){
+                      if(peiceObj.peice[i][j]==1){
+                          let p= peiceObj.x+j;
+                          let q= peiceObj.y+i;
+                         grid[q][p]=peiceObj.peiceClr;
+            
+                        }
+                    }
+                }
+                if(peiceObj.y==0){
+                    alert("game over");
+                    grid=genetratGrid();
+                    score=0;
+                }
+                peiceObj=null;
+            }
+            renderGrid();
     
 
     }
