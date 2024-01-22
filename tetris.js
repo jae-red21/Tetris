@@ -75,14 +75,29 @@ const shapes =[
     //random shape
 
     function randomShape(){
-    
+        let ran = Math.floor((Math.random()*7));
+        let peice= shapes[ran];
+        let peiceClr= ran+1;
+        let x=3;
+        let y=0
+        return {peice,peiceClr,x,y};
+
     
     }
 
        // rendering the peice
 
     function renderPeice(){
-          
+        let peice=peiceObj.peice;
+        for(let i=0;i<peice.length;i++){
+            for(let j=0;j<peice[i].length;j++){
+                if(peice[i][j]==1){
+                    ctx.fillStyle=color[peiceObj.peiceClr];
+                    ctx.fillRect(peiceObj.x+j,peiceObj.y+i,1,1);
+                }
+            }
+        }
+
 
 
     }
