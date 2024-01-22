@@ -103,7 +103,7 @@ const shapes =[
     }
 
 
-    // to check weather the boxes hit the border of canva
+    // to check weather the boxes hit the border of canvas
     
     function area(x,y,reverse){
             let peice=peiceObj.peice || reverse;
