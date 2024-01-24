@@ -195,19 +195,27 @@ const shapes =[
     }
     
     
-    // make a grid
     function genetratGrid(){
-      
-
-
+        let grid=[];
+        for(let i=0;i<row;i++){
+            grid.push([]);
+            for(let j=0;j<col;j++){
+              grid[i].push(0);
+            }
+        }
+        return grid;
     }
 
-    // render the grid
 
-    function renderGrid(){
-       
-        
+function renderGrid() {
+  for (let i = 0; i < grid.length; i++) {
+    for (let j = 0; j < grid[i].length; j++) {
+      ctx.fillStyle = color[grid[i][j]];
+      ctx.fillRect(j, i, 1, 1);
     }
+  }
+  renderPeice();
+}
 
     // to remove the filled row;
 
