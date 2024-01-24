@@ -196,18 +196,28 @@ const shapes =[
     
     
     // make a grid
-    function genetratGrid(){
-      
-
-
+function genetratGrid() {
+  let grid = [];
+  for (let i = 0; i < row; i++) {
+    grid.push([]); // new empty arry is added
+    for (let j = 0; j < col; j++) {
+      grid[i].push(0); //empty cell or a nutral state
     }
+  }
+  return grid;
+}
 
     // render the grid
 
-    function renderGrid(){
-       
-        
+function renderGrid() {
+  for (let i = 0; i < grid.length; i++) {
+    for (let j = 0; j < grid[i].length; j++) {
+      ctx.fillStyle = color[grid[i][j]];
+      ctx.fillRect(j, i, 1, 1);
     }
+  }
+  renderPeice();
+}
 
     // to remove the filled row;
 
